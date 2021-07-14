@@ -1,0 +1,29 @@
+.registerBox {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #1f1b1b;
+  color: var(--text-primary);
+
+  border: none;
+
+  .registerInfo {
+    color: var(--text-secondary);
+    text-align: center;
+
+    margin: 24px 44px;
+
+    h2,
+    h3 {
+      font-weight: 400;
+    }
+  }
+
+  .inputBlock {
+    width: 50%;
+  }
+}

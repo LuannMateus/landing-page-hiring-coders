@@ -1,0 +1,67 @@
+.booksSection {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+
+  padding: 24px 0;
+
+  background: var(--bg-primary);
+  color: var(--text-primary);
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+
+    margin: 42px 0;
+  }
+
+  .booksBlock {
+    display: flex;
+    justify-content: space-around;
+    gap: 24px;
+
+    margin-bottom: 42px;
+
+    .card {
+      width: 220px;
+
+      display: flex;
+      text-align: center;
+
+      .cardImage {
+        width: 220px;
+        height: 220px;
+      }
+
+      .cardContent {
+        width: 220px;
+        height: 90px;
+        text-align: center;
+
+        padding: 0;
+
+        p,
+        span,
+        strong {
+          font-weight: 800;
+          font-size: 1.2rem;
+          font-weight: 800;
+          line-height: 30px;
+          margin: 14px 0;
+
+          color: var(--text-primary);
+
+          text-align: center;
+        }
+
+        > p span {
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+}
