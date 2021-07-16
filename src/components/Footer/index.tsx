@@ -5,39 +5,49 @@ import InstagramLogo from '../../assets/img/instagram.svg';
 import GithubLogo from '../../assets/img/github.svg';
 
 import styles from './style.module.scss';
+import { animated, useSpring } from 'react-spring';
 
 type FooterProps = {};
 
 const Footer: FunctionComponent<FooterProps> = ({ ...props }) => {
+  const animation = useSpring({
+    loop: { reverse: true },
+    from: { y: 0 },
+    to: { y: 5 },
+    config: { bounce: 1, velocity: 100, duration: 1500 },
+  });
+
   return (
     <footer className={styles.footer} {...props}>
       <span>
-        Created By <strong>@LuanMateus</strong>
+        Created By <strong>@luanmateus</strong>
       </span>
       <section className={styles.footerSocialMedia}>
-        <a href="/">
-          <img
-            src={FacebookLogo}
-            alt="Facebbok Logo"
-            aria-label="Facebbok Logo"
-          />
-        </a>
+        <animated.div style={animation} className={styles.footerSocialMedia}>
+          <a href="/">
+            <img
+              src={FacebookLogo}
+              alt="Facebbok Logo"
+              aria-label="Facebbok Logo"
+            />
+          </a>
 
-        <a href="/">
-          <img
-            src={InstagramLogo}
-            alt="Facebbok Logo"
-            aria-label="Facebbok Logo"
-          />
-        </a>
+          <a href="/">
+            <img
+              src={InstagramLogo}
+              alt="Facebbok Logo"
+              aria-label="Facebbok Logo"
+            />
+          </a>
 
-        <a href="/">
-          <img
-            src={GithubLogo}
-            alt="Facebbok Logo"
-            aria-label="Facebbok Logo"
-          />
-        </a>
+          <a href="/">
+            <img
+              src={GithubLogo}
+              alt="Facebbok Logo"
+              aria-label="Facebbok Logo"
+            />
+          </a>
+        </animated.div>
       </section>
     </footer>
   );

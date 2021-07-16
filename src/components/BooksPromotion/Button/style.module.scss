@@ -23,9 +23,10 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 44px;
 
     margin-bottom: 44px;
+
+    gap: 24px;
 
     .card {
       width: 260px;
@@ -57,12 +58,14 @@
 
         background: var(--bg-secondary);
 
+        font-family: 'Montserrat Alternates', sans-serif;
+
         h2 {
           margin: 0;
           padding: 12px 0;
           color: var(--text-secondary);
 
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           font-weight: 400;
 
           border: 1px solid #dacece79;
@@ -74,6 +77,8 @@
           font-weight: 600;
           font-size: 1rem;
           line-height: 30px;
+
+          font-family: 'Montserrat Alternates', sans-serif;
 
           padding: 4px 0;
 
