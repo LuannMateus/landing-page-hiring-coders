@@ -6,8 +6,15 @@ import {
   CardMedia,
   CardActionArea,
 } from '@material-ui/core';
+import { FunctionComponent } from 'react';
 
-const BooksPromotion = () => {
+type BooksPromotionProps = {
+  themeMode: string;
+};
+
+const BooksPromotion: FunctionComponent<BooksPromotionProps> = ({
+  themeMode,
+}) => {
   const books = [
     {
       title: 'Test Driven Development',
@@ -59,7 +66,13 @@ const BooksPromotion = () => {
   };
 
   return (
-    <div className={styles.booksSection}>
+    <div
+      className={
+        themeMode === 'LIGHT'
+          ? styles.booksSection
+          : `${styles.booksSection} ${styles.booksSectionDark}`
+      }
+    >
       <h2>ALGUMAS PROMOÇÕES</h2>
 
       <div className={styles.booksBlock}>{renderBooks()}</div>

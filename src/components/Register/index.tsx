@@ -7,7 +7,11 @@ import { Button } from '../Button';
 import styles from './style.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Register: FunctionComponent = () => {
+type RegisterProps = {
+  themeMode: string;
+};
+
+const Register: FunctionComponent<RegisterProps> = ({ themeMode }) => {
   const [name, setName] = useState<string>();
   const [lastName, setLastName] = useState<string>();
   const [email, setEmail] = useState<string>();
@@ -77,7 +81,11 @@ const Register: FunctionComponent = () => {
           />
         </div>
 
-        <Button type="submit" disabled={!(name && lastName && email)}>
+        <Button
+          type="submit"
+          disabled={!(name && lastName && email)}
+          themeMode={themeMode}
+        >
           Registrar-se
         </Button>
       </form>

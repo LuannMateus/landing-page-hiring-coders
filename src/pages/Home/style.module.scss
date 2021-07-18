@@ -8,8 +8,7 @@
 
   .homeHeader {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     height: 15vh;
@@ -18,16 +17,55 @@
     background: var(--bg-primary);
     color: var(--text-primary);
 
-    > img {
-      width: 44px;
+    section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      margin-left: 24px;
+
+      > img {
+        width: 44px;
+      }
+      h1 {
+        font: 800 2rem/30px 'Montserrat Alternates', sans-serif;
+      }
     }
 
-    h1 {
-      font: 800 2rem/30px 'Montserrat Alternates', sans-serif;
+    section:last-child {
+      display: flex;
+      flex-direction: row;
+      justify-self: flex-end;
+
+      .sunIcon {
+        font-size: 44px;
+        color: var(--bg-secondary);
+      }
+
+      .moonIcon {
+        font-size: 44px;
+        color: var(--bg-primary);
+      }
+
+      .toggleButton {
+        justify-self: flex-start;
+      }
     }
 
     h2 {
       font: 400 1.5rem/40px 'Montserrat Alternates', sans-serif;
+    }
+  }
+
+  .homeHeaderDark {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+
+    border-bottom: 1px solid var(--bg-primary);
+
+    > img {
+      color: var(--bg-primary);
     }
   }
 }
@@ -117,6 +155,10 @@
   }
 }
 
+.homeMainDark {
+  border-bottom: 1px solid var(--bg-primary);
+}
+
 @media screen and (max-width: 1200px) {
   .container {
     .homeMain {
@@ -162,6 +204,15 @@
 
 @media screen and (max-width: 720px) {
   .container {
+    .homeHeader {
+      display: flex;
+      flex-direction: column;
+
+      height: 24vh;
+
+      padding: 24px 0;
+    }
+
     .homeMain {
       display: flex;
       flex-direction: column;

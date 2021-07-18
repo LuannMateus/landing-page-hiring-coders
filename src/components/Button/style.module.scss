@@ -29,3 +29,15 @@
     opacity: 0.5;
   }
 }
+
+.buttonDark {
+  &:hover {
+    // filter: brightness(1.4);
+    background: #ff4949;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}

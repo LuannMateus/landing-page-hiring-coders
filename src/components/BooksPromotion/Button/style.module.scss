@@ -100,6 +100,33 @@
   }
 }
 
+.booksSectionDark {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+
+  border-bottom: 1px solid var(--bg-primary);
+
+  .booksBlock {
+    .card {
+      .cardContent {
+        background: var(--bg-primary);
+
+        h2 {
+          border-bottom: 1px solid var(--bg-secondary);
+          border-top: 1px solid var(--bg-secondary);
+        }
+
+        h2,
+        p,
+        span,
+        strong {
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
 // @media screen and (max-width: 720px) {
 //   .booksSection {
 //     .booksBlock {

@@ -1,23 +1,41 @@
-import { Fragment } from 'react';
+import { Fragment, useState, FunctionComponent } from 'react';
 import { useSpring, animated } from 'react-spring';
+import { Switch } from '@material-ui/core';
 
 import { BooksPromotion } from '../../components/BooksPromotion/Button';
 import { Footer } from '../../components/Footer';
 import { Register } from '../../components/Register';
 
 import { CgArrowDownO } from 'react-icons/cg';
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 import Logo from '../../assets/img/logo.svg';
+import LogoDark from '../../assets/img/logoDark.svg';
 import Book from '../../assets/img/book.png';
 
 import styles from './style.module.scss';
+import { useEffect } from 'react';
 
-const Home = () => {
+type HomeProps = {
+  theme: () => string;
+};
+
+const Home: FunctionComponent<HomeProps> = ({ theme }) => {
   const animation = useSpring({
     from: { opacity: 0, marginLeft: -5000 },
     to: { opacity: 1, marginLeft: 0 },
     config: { bounce: 1, velocity: 100, duration: 800 },
   });
+
+  const [themeMode, setThemeMode] = useState('LIGHT');
+
+  useEffect(() => {
+    const actualTheme = localStorage.getItem('theme');
+
+    if (actualTheme) {
+      setThemeMode(actualTheme);
+    }
+  }, [themeMode]);
 
   const books = [
     {
@@ -56,13 +74,54 @@ const Home = () => {
     });
   };
 
+  const handleTheme = () => {
+    const actualTheme = theme();
+
+    setThemeMode(actualTheme);
+
+    localStorage.setItem('theme', actualTheme);
+  };
+
   return (
     <div className={styles.container}>
-      <header className={styles.homeHeader}>
-        <img src={Logo} alt="Logo" />
-        <h1>Best Book</h1>
+      <header
+        className={
+          themeMode === 'LIGHT'
+            ? styles.homeHeader
+            : `${styles.homeHeader} ${styles.homeHeaderDark}`
+        }
+      >
+        <section>
+          {themeMode === 'LIGHT' ? (
+            <img src={Logo} alt="Logo" onClick={handleTheme} />
+          ) : (
+            <img src={LogoDark} alt="Logo" onClick={handleTheme} />
+          )}
+          <h1>Best Book</h1>
+        </section>
+
+        <section>
+          {themeMode === 'LIGHT' ? (
+            <FaSun className={styles.sunIcon} />
+          ) : (
+            <FaMoon className={styles.moonIcon} />
+          )}
+
+          <Switch
+            className={styles.toggleButton}
+            onClick={handleTheme}
+            color="primary"
+            checked={themeMode !== 'LIGHT'}
+          />
+        </section>
       </header>
-      <main className={styles.homeMain}>
+      <main
+        className={
+          themeMode === 'LIGHT'
+            ? styles.homeMain
+            : `${styles.homeMain} ${styles.homeMainDark}`
+        }
+      >
         <section className={styles.mainHeader}>
           <h2>Registre-se e possua as melhores promoções de livros!</h2>
           <img src={Book} alt="Book" />
@@ -82,11 +141,11 @@ const Home = () => {
         </a>
       </main>
 
-      <BooksPromotion />
+      <BooksPromotion themeMode={themeMode} />
 
-      <Register />
+      <Register themeMode={themeMode} />
 
-      <Footer />
+      <Footer themeMode={themeMode} />
     </div>
   );
 };
